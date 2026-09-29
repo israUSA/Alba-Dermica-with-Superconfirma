@@ -19,26 +19,43 @@ const pillars = [
   },
   {
     icon: "gem",
-    title: "Suites Privadas VIP",
+    title: "Suites Privadas",
     desc: "Atención individual y privacidad absoluta",
   },
 ];
+
+const numerals = ["i", "ii", "iii", "iv"];
 ---
 
-<section class="border-y border-line-dark bg-night">
-  <div class="shell grid grid-cols-1 gap-8 py-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
-    {
-      pillars.map((pillar) => (
-        <div data-reveal class="flex items-center gap-3.5">
-          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-night-card">
-            <Icon name={pillar.icon} class="h-4.5 w-4.5 text-gold" strokeWidth={1.8} />
-          </span>
-          <div class="flex flex-col gap-0.5">
-            <p class="text-[13px] font-semibold text-white">{pillar.title}</p>
-            <p class="text-[11px] text-ink-faint">{pillar.desc}</p>
+<section class="bg-obsidian text-pearl">
+  <div class="shell">
+    <div class="hairline text-pearl"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
+      {
+        pillars.map((pillar, i) => (
+          <div
+            data-reveal
+            class:list={[
+              "group flex flex-col gap-5 py-10 sm:px-8",
+              i > 0 && "border-t border-white/[0.07] sm:border-t-0",
+              i % 2 === 1 && "sm:border-l sm:border-white/[0.07]",
+              i === 2 && "lg:border-l lg:border-white/[0.07] sm:pl-0 lg:pl-8",
+              i === 0 && "sm:pl-0",
+            ]}
+          >
+            <div class="flex items-center justify-between">
+              <span class="font-display text-2xl text-champagne/70 italic">{numerals[i]}.</span>
+              <span class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 transition-colors duration-500 group-hover:border-champagne/50 group-hover:bg-champagne/10">
+                <Icon name={pillar.icon} class="h-4 w-4 text-champagne" strokeWidth={1.5} />
+              </span>
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <p class="font-display text-[24px] leading-tight">{pillar.title}</p>
+              <p class="text-[13px] leading-relaxed text-pearl/50">{pillar.desc}</p>
+            </div>
           </div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </div>
 </section>

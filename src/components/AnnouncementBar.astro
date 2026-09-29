@@ -2,16 +2,20 @@
 import Icon from "./Icon.astro";
 ---
 
-<div class="overflow-hidden bg-night">
+<div class="relative z-10 border-b border-white/[0.06] bg-obsidian">
   <div class="shell flex items-center justify-between gap-4 py-2.5">
     <div class="flex min-w-0 items-center gap-2.5">
-      <Icon name="sparkles" class="h-3.5 w-3.5 shrink-0 text-gold" />
-      <p class="truncate text-xs font-medium whitespace-nowrap text-white">
-        Atelier Privado de Alta Cosmetología • Diagnóstico Digital 3D de Piel de Cortesía
+      <Icon name="sparkle" class="h-3 w-3 shrink-0 text-champagne" />
+      <p class="truncate text-[11px] tracking-[0.06em] whitespace-nowrap text-pearl/70">
+        Atelier Privado de Alta Cosmetología
+        <span class="mx-2 text-champagne/60">·</span>
+        <span class="text-pearl">Diagnóstico Digital 3D de Piel de Cortesía</span>
       </p>
     </div>
-    <p class="hidden shrink-0 text-xs whitespace-nowrap text-gold md:block">
-      Concierge VIP: +52 55 8421 9000 | Masaryk • Polanco
+    <p class="hidden shrink-0 text-[11px] tracking-[0.06em] whitespace-nowrap text-pearl/60 md:block">
+      Concierge <span class="text-champagne">+52 55 8421 9000</span>
+      <span class="mx-2 text-champagne/60">·</span>
+      Masaryk • Polanco
     </p>
   </div>
 </div>

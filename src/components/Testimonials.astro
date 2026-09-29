@@ -4,21 +4,21 @@ import Icon from "./Icon.astro";
 const reviews = [
   {
     quote:
-      "“El protocolo Hydra-Luxe y la atención de la Dra. Camille cambiaron mi piel por completo. Desapareció la opacidad y recuperé una luminosidad que creí perdida. La elegancia del lugar es insuperable.”",
+      "El protocolo Hydra-Luxe y la atención de la Dra. Camille cambiaron mi piel por completo. Desapareció la opacidad y recuperé una luminosidad que creí perdida. La elegancia del lugar es insuperable.",
     name: "Valeria Santamaría",
     role: "Directora Creativa • CDMX",
     treatment: "Protocolo: Hydra-Luxe Infusión Celular",
   },
   {
     quote:
-      "“Buscaba resultados sin pasar por agujas ni tratamientos invasivos. El efecto del Sculpt & Lift de radiofrecuencia en el contorno mandibular es impresionante desde la primera sesión.”",
+      "Buscaba resultados sin pasar por agujas ni tratamientos invasivos. El efecto del Sculpt & Lift de radiofrecuencia en el contorno mandibular es impresionante desde la primera sesión.",
     name: "Mariana De la Torre",
     role: "Empresaria • Guadalajara",
     treatment: "Protocolo: Sculpt & Lift Bio-Radiofrecuencia",
   },
   {
     quote:
-      "“Un santuario en toda regla. La privacidad, el diagnóstico 3D donde te explican exactamente lo que tu piel necesita y el trato del equipo me dan una confianza infinita.”",
+      "Un santuario en toda regla. La privacidad, el diagnóstico 3D donde te explican exactamente lo que tu piel necesita y el trato del equipo me dan una confianza infinita.",
     name: "Camila Fernández",
     role: "Consultora Financiera • Monterrey",
     treatment: "Protocolo: Glow Peel & Exosomas",
@@ -26,36 +26,54 @@ const reviews = [
 ];
 ---
 
-<section class="bg-cream">
-  <div class="shell flex flex-col items-center gap-10 py-20">
-    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
-      <p class="eyebrow" data-reveal>TESTIMONIOS &amp; RESULTADOS VERIFICADOS</p>
-      <h2 class="section-title" data-reveal>
-        La Transformación Contada por Nuestras Pacientes
+<section class="relative isolate overflow-hidden bg-pearl">
+  <div class="orb top-24 left-[8%] h-[420px] w-[420px] bg-champagne-soft" aria-hidden="true"></div>
+  <div class="orb right-[6%] bottom-12 h-[460px] w-[460px] bg-sage/35" aria-hidden="true"></div>
+
+  <div class="shell flex flex-col gap-16 py-24 lg:py-32">
+    <div class="flex flex-col items-center gap-6 text-center" data-reveal-stagger>
+      <p class="kicker text-champagne-deep" data-reveal>
+        <span class="kicker-num">04</span> Testimonios &amp; Resultados Verificados
+      </p>
+      <h2 class="section-title max-w-[900px] text-ink" data-reveal>
+        La transformación contada por <em class="text-champagne-deep">nuestras pacientes</em>
       </h2>
     </div>
 
-    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-3" data-reveal-stagger>
+    <div class="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:pb-12" data-reveal-stagger>
       {
-        reviews.map((review) => (
+        reviews.map((review, i) => (
           <figure
             data-reveal
-            class="card-lift flex flex-col justify-between gap-4 rounded-2xl border border-line bg-white p-7"
+            class:list={[
+              "glass-light glass-sheen flex flex-col justify-between gap-10 rounded-[32px] p-8 lg:p-10",
+              i === 1 && "md:translate-y-12",
+            ]}
           >
-            <div class="flex flex-col gap-3.5">
-              <div class="flex items-center gap-1" aria-label="Valoración: 5 de 5 estrellas">
-                {Array.from({ length: 5 }).map(() => (
-                  <Icon name="star" class="h-3.5 w-3.5 text-gold" filled />
-                ))}
+            <div class="flex flex-col gap-5">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-[90px] leading-[0.6] text-champagne select-none" aria-hidden="true">
+                  “
+                </span>
+                <div class="flex items-center gap-0.5" aria-label="Valoración: 5 de 5 estrellas">
+                  {Array.from({ length: 5 }).map(() => (
+                    <Icon name="star" class="h-3 w-3 text-champagne-deep" filled />
+                  ))}
+                </div>
               </div>
-              <blockquote class="text-[13px] leading-[1.6] text-ink-soft italic">
+              <blockquote class="font-display text-[22px] leading-[1.4] text-ink italic">
                 {review.quote}
               </blockquote>
             </div>
-            <figcaption class="flex flex-col gap-0.5 border-t border-line pt-4">
-              <span class="font-display text-[15px] font-bold text-ink">{review.name}</span>
-              <span class="text-[11px] text-gold-dark">{review.role}</span>
-              <span class="text-[11px] text-ink-faint">{review.treatment}</span>
+            <figcaption class="flex items-center gap-4 border-t border-ink/10 pt-5">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-obsidian font-display text-base text-champagne italic">
+                {review.name.split(" ").map((w) => w[0]).slice(0, 2).join("").toLowerCase()}
+              </span>
+              <span class="flex flex-col gap-0.5">
+                <span class="text-sm font-semibold text-ink">{review.name}</span>
+                <span class="text-[11px] text-champagne-deep">{review.role}</span>
+                <span class="text-[11px] text-ink-soft">{review.treatment}</span>
+              </span>
             </figcaption>
           </figure>
         ))

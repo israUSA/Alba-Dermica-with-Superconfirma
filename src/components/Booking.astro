@@ -11,7 +11,7 @@ const chips = [
 
 const specialists = [
   {
-    initials: "CL",
+    initials: "cl",
     name: "Dra. Camille Laurent",
     role: "Directora Científica • Longevidad Cutánea",
     uni: "PhD en Biología Celular Cutánea (París)",
@@ -19,7 +19,7 @@ const specialists = [
     selected: true,
   },
   {
-    initials: "SB",
+    initials: "sb",
     name: "Lic. Sofia Benavides",
     role: "Máster en Terapias Suizas & Remodelación",
     uni: "Certificación Instituto Dérmico de Ginebra",
@@ -27,7 +27,7 @@ const specialists = [
     selected: false,
   },
   {
-    initials: "MV",
+    initials: "mv",
     name: "Dr. Mateo Valenzuela",
     role: "Médico Estético & Bioestimulación",
     uni: "Especialista en Regeneración Tisular",
@@ -51,29 +51,41 @@ const notes = [
   { icon: "shield-check", text: "100% de confidencialidad médica garantizada" },
   { icon: "message-circle", text: "Confirmación inmediata vía WhatsApp Concierge" },
 ];
+
+const fields = [
+  { id: "alba-name", label: "Nombre Completo", icon: "user", name: "nombre", type: "text", value: "Carolina Méndez L.", autocomplete: "name" },
+  { id: "alba-phone", label: "WhatsApp / Teléfono", icon: "phone", name: "telefono", type: "tel", value: "+52 55 1234 5678", autocomplete: "tel" },
+  { id: "alba-email", label: "Correo Electrónico", icon: "mail", name: "email", type: "email", value: "carolina.mendez@luxury.com", autocomplete: "email" },
+];
 ---
 
-<section id="reservas" class="bg-night">
-  <div class="shell flex flex-col items-center gap-10 py-20">
-    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
-      <p class="eyebrow-dark" data-reveal>ATELIER PRIVADO DE CITAS &amp; VALORACIÓN</p>
-      <h2 class="section-title text-white" data-reveal>
-        Agenda tu Experiencia de Transformación Facial
-      </h2>
-      <p class="section-sub text-ink-faint" data-reveal>
+<section id="reservas" class="relative isolate overflow-hidden bg-obsidian text-pearl">
+  <div class="orb top-20 -left-32 h-[520px] w-[520px] bg-sage-deep/60" aria-hidden="true"></div>
+  <div class="orb right-[-8%] bottom-10 h-[560px] w-[560px] bg-champagne/20" aria-hidden="true"></div>
+  <div class="orb top-1/2 left-1/2 h-[300px] w-[300px] bg-sage/20" aria-hidden="true"></div>
+
+  <div class="shell flex flex-col gap-14 py-24 lg:py-32">
+    <div class="grid grid-cols-1 items-end gap-8 lg:grid-cols-12" data-reveal-stagger>
+      <div class="flex flex-col gap-6 lg:col-span-7">
+        <p class="kicker text-champagne" data-reveal>
+          <span class="kicker-num">02</span> Atelier Privado de Citas &amp; Valoración
+        </p>
+        <h2 class="section-title" data-reveal>
+          Agenda tu experiencia de <em class="text-champagne">transformación facial</em>
+        </h2>
+      </div>
+      <p class="text-[15px] leading-[1.75] text-pearl/60 lg:col-span-4 lg:col-start-9" data-reveal>
         Selecciona tu protocolo de interés, elige a tu especialista de confianza y asegura tu
         espacio prioritario en suite privada.
       </p>
     </div>
 
-    <div
-      data-reveal="zoom"
-      class="flex w-full max-w-[1080px] flex-col gap-8 rounded-[20px] border border-line-dark bg-night-card p-6 sm:p-10"
-    >
-      <div class="flex flex-col gap-4">
-        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
-          1. SELECCIONA EL PROTOCOLO O TRATAMIENTO DE TU INTERÉS
-        </p>
+    <div data-reveal="zoom" class="glass glass-sheen rounded-[36px] px-6 pt-2 pb-8 sm:px-10 lg:px-12 lg:pb-12">
+      <div class="step border-t-0">
+        <div class="step-label">
+          <span class="step-num">i.</span>
+          <p class="step-text">Selecciona el protocolo o tratamiento de tu interés</p>
+        </div>
         <div class="flex flex-wrap gap-2.5" data-select-group>
           {
             chips.map((chip, index) => (
@@ -91,15 +103,12 @@ const notes = [
         </div>
       </div>
 
-      <div id="especialistas" class="flex flex-col gap-4">
-        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
-          2. ELIGE A TU ESPECIALISTA DISPONIBLE
-        </p>
-        <div
-          class="grid grid-cols-1 gap-4 md:grid-cols-3"
-          data-select-group
-          data-group-specialists
-        >
+      <div id="especialistas" class="step">
+        <div class="step-label">
+          <span class="step-num">ii.</span>
+          <p class="step-text">Elige a tu especialista disponible</p>
+        </div>
+        <div class="grid grid-cols-1 gap-3 md:grid-cols-3" data-select-group data-group-specialists>
           {
             specialists.map((doctor) => (
               <button
@@ -110,21 +119,19 @@ const notes = [
                 aria-pressed={doctor.selected ? "true" : "false"}
               >
                 <span class="flex items-center justify-between gap-3">
-                  <span class="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-gold font-display text-sm font-bold text-night">
-                    {doctor.initials}
-                  </span>
+                  <span class="doc-avatar">{doctor.initials}</span>
                   <span class="doc-radio">
                     <Icon name="check" class="radio-check" strokeWidth={3} />
                   </span>
                 </span>
-                <span class="flex flex-col gap-0.5">
-                  <span class="font-display text-[13px] font-bold text-white">{doctor.name}</span>
-                  <span class="text-xs text-gold">{doctor.role}</span>
-                  <span class="text-[11px] text-ink-faint">{doctor.uni}</span>
+                <span class="flex flex-col gap-1">
+                  <span class="font-display text-[22px] leading-tight text-pearl">{doctor.name}</span>
+                  <span class="text-xs text-champagne">{doctor.role}</span>
+                  <span class="text-[11px] text-pearl/45">{doctor.uni}</span>
                 </span>
-                <span class="inline-flex w-fit items-center rounded-[10px] bg-[#3d3428] px-2.5 py-1">
-                  <Icon name="circle-check" class="mr-1.5 h-3 w-3 text-live" />
-                  <span class="text-[10px] font-medium text-live">{doctor.status}</span>
+                <span class="mt-auto inline-flex w-fit items-center gap-1.5 text-[10px] font-medium tracking-[0.04em] text-live">
+                  <span class="h-1.5 w-1.5 rounded-full bg-live"></span>
+                  {doctor.status}
                 </span>
               </button>
             ))
@@ -132,14 +139,15 @@ const notes = [
         </div>
       </div>
 
-      <div class="flex flex-col gap-4">
-        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
-          3. SELECCIONA FECHA Y HORARIO PRIORITARIO
-        </p>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <div class="step">
+        <div class="step-label">
+          <span class="step-num">iii.</span>
+          <p class="step-text">Selecciona fecha y horario prioritario</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
           <div class="flex flex-col gap-3">
-            <p class="text-xs text-ink-faint">Día disponible:</p>
-            <div class="grid grid-cols-4 gap-2.5" data-select-group>
+            <p class="text-[11px] tracking-[0.1em] text-pearl/45 uppercase">Día disponible</p>
+            <div class="grid grid-cols-4 gap-2" data-select-group>
               {
                 days.map((day) => (
                   <button
@@ -156,8 +164,8 @@ const notes = [
             </div>
           </div>
           <div class="flex flex-col gap-3">
-            <p class="text-xs text-ink-faint">Horario VIP:</p>
-            <div class="grid grid-cols-4 gap-2.5" data-select-group>
+            <p class="text-[11px] tracking-[0.1em] text-pearl/45 uppercase">Horario</p>
+            <div class="grid grid-cols-4 gap-2" data-select-group>
               {
                 hours.map((hour) => (
                   <button
@@ -175,67 +183,52 @@ const notes = [
         </div>
       </div>
 
-      <div class="flex flex-col gap-4">
-        <p class="text-xs font-semibold tracking-[0.08em] text-gold">4. DATOS DE CONFIRMACIÓN VIP</p>
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div class="flex flex-col gap-1.5">
-            <label for="alba-name" class="text-[11px] text-ink-faint">Nombre Completo</label>
-            <div class="input-box">
-              <Icon name="user" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
-              <input
-                id="alba-name"
-                name="nombre"
-                type="text"
-                value="Carolina Méndez L."
-                autocomplete="name"
-              />
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <label for="alba-phone" class="text-[11px] text-ink-faint">WhatsApp / Teléfono VIP</label>
-            <div class="input-box">
-              <Icon name="phone" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
-              <input
-                id="alba-phone"
-                name="telefono"
-                type="tel"
-                value="+52 55 1234 5678"
-                autocomplete="tel"
-              />
-            </div>
-          </div>
-          <div class="flex flex-col gap-1.5">
-            <label for="alba-email" class="text-[11px] text-ink-faint">Correo Electrónico</label>
-            <div class="input-box">
-              <Icon name="mail" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
-              <input
-                id="alba-email"
-                name="email"
-                type="email"
-                value="carolina.mendez@luxury.com"
-                autocomplete="email"
-              />
-            </div>
-          </div>
+      <div class="step">
+        <div class="step-label">
+          <span class="step-num">iv.</span>
+          <p class="step-text">Datos de confirmación</p>
+        </div>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {
+            fields.map((field) => (
+              <div class="flex flex-col gap-1">
+                <label for={field.id} class="text-[11px] tracking-[0.1em] text-pearl/45 uppercase">
+                  {field.label}
+                </label>
+                <div class="input-box">
+                  <Icon name={field.icon} class="h-3.5 w-3.5 shrink-0 text-champagne/70" />
+                  <input
+                    id={field.id}
+                    name={field.name}
+                    type={field.type}
+                    value={field.value}
+                    autocomplete={field.autocomplete}
+                  />
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
 
-      <button type="submit" class="btn btn-gold btn-shine">
-        <Icon name="calendar-check" class="h-4.5 w-4.5" strokeWidth={2.2} />
-        <span data-confirm-cta>
-          Confirmar Cita de Valoración Privada con Dra. Camille Laurent
-        </span>
-      </button>
+      <div class="flex flex-col gap-6 border-t border-white/10 pt-8">
+        <button type="submit" class="btn btn-confirm btn-shine">
+          <Icon name="calendar-check" class="h-4.5 w-4.5 shrink-0" strokeWidth={2} />
+          <span data-confirm-cta>
+            Confirmar Cita de Valoración Privada con Dra. Camille Laurent
+          </span>
+        </button>
 
-      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-7">
-        {
-          notes.map((note) => (
-            <div class="flex items-center gap-1.5">
-              <Icon name={note.icon} class="h-3.5 w-3.5 shrink-0 text-gold" />
-              <p class="text-[11px] text-ink-faint">{note.text}</p>
-            </div>
-          ))
-        }
+        <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-8">
+          {
+            notes.map((note) => (
+              <div class="flex items-center gap-2">
+                <Icon name={note.icon} class="h-3.5 w-3.5 shrink-0 text-champagne" />
+                <p class="text-[11px] tracking-[0.03em] text-pearl/50">{note.text}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 const protocolLinks = [
   "Hydra-Luxe Infusión Celular",
   "Sculpt & Lift Bio-Radiofrecuencia",
@@ -13,29 +15,31 @@ const contact = [
 ];
 ---
 
-<footer class="bg-night">
-  <div class="shell flex flex-col gap-12 py-16 pb-8">
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-[380px_1fr_1fr] lg:gap-16">
-      <div class="flex flex-col gap-4">
-        <p class="font-display text-[22px] font-bold tracking-[0.1em] text-white">ALBA DÉRMICA</p>
-        <p class="text-[13px] leading-[1.6] text-ink-faint">
+<footer class="relative isolate overflow-hidden bg-obsidian text-pearl">
+  <div class="orb -top-40 left-1/3 h-[420px] w-[420px] bg-sage-deep/40" aria-hidden="true"></div>
+
+  <div class="shell flex flex-col gap-16 pt-24 pb-8">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-12">
+      <div class="flex flex-col items-start gap-6 md:col-span-5">
+        <p class="font-display text-[clamp(24px,2.4vw,32px)] leading-[1.25] font-light text-pearl/85">
           Atelier de alta cosmetología clínica y regeneración celular. Dedicados al despertar de la
-          juventud y pureza biológica de tu piel a través de la cosmecéutica de autor.
+          juventud y pureza biológica de tu piel a través de la <em class="text-champagne">cosmecéutica de autor</em>.
         </p>
-        <p class="text-[11px] text-gold">
-          Masaryk • Polanco | CDMX • Certificación Médica Estética
-        </p>
+        <a href="#reservas" class="btn btn-champagne btn-shine">
+          Reservar Cita
+          <span class="btn-orb"><Icon name="arrow-up-right" class="h-4 w-4" /></span>
+        </a>
       </div>
 
-      <div class="flex flex-col gap-3.5">
-        <p class="text-[11px] font-semibold tracking-[0.1em] text-gold">PROTOCOLOS</p>
-        <ul class="flex flex-col gap-2.5">
+      <div class="flex flex-col gap-5 md:col-span-3 md:col-start-7">
+        <p class="text-[10px] font-semibold tracking-[0.28em] text-champagne">PROTOCOLOS</p>
+        <ul class="flex flex-col gap-3">
           {
             protocolLinks.map((link) => (
               <li>
                 <a
                   href="#tratamientos"
-                  class="text-[13px] text-ink-faint transition-colors duration-300 hover:text-gold"
+                  class="text-[13px] text-pearl/55 transition-colors duration-300 hover:text-champagne"
                 >
                   {link}
                 </a>
@@ -45,26 +49,36 @@ const contact = [
         </ul>
       </div>
 
-      <div class="flex flex-col gap-3.5">
-        <p class="text-[11px] font-semibold tracking-[0.1em] text-gold">CONTACTO &amp; ATELIER</p>
-        <div class="flex flex-col gap-2.5">
-          {
-            contact.map((line) => (
-              <p class="text-[13px] text-ink-faint">{line}</p>
-            ))
-          }
-          <p class="text-[13px] text-gold">WhatsApp Concierge: +52 55 8421 9000</p>
+      <div class="flex flex-col gap-5 md:col-span-3">
+        <p class="text-[10px] font-semibold tracking-[0.28em] text-champagne">CONTACTO &amp; ATELIER</p>
+        <div class="flex flex-col gap-3">
+          {contact.map((line) => <p class="text-[13px] text-pearl/55">{line}</p>)}
+          <a href="https://wa.me/525584219000" class="text-[13px] text-champagne hover:text-champagne-soft">
+            WhatsApp Concierge: +52 55 8421 9000
+          </a>
         </div>
       </div>
     </div>
 
+    <div class="flex flex-col gap-4">
+      <p
+        class="wordmark font-display text-[clamp(64px,16.5vw,250px)] leading-[0.8] font-light tracking-[-0.03em] whitespace-nowrap select-none"
+        aria-hidden="true"
+      >
+        Alba <em>Dérmica</em>
+      </p>
+      <p class="text-[11px] tracking-[0.06em] text-champagne/80">
+        Masaryk • Polanco | CDMX • Certificación Médica Estética
+      </p>
+    </div>
+
     <div
-      class="flex flex-col items-center justify-between gap-3 border-t border-line-dark pt-6 sm:flex-row"
+      class="flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row"
     >
-      <p class="text-xs text-ink-faint">
+      <p class="text-[11px] text-pearl/40">
         © 2026 ALBA DÉRMICA Atelier Facial S.A. de C.V. Todos los derechos reservados.
       </p>
-      <p class="text-xs text-gold">Aviso de Privacidad • Protocolo Sanitario • Términos VIP</p>
+      <p class="text-[11px] text-pearl/55">Aviso de Privacidad • Protocolo Sanitario • Términos</p>
     </div>
   </div>
 </footer>

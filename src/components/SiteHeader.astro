@@ -11,25 +11,25 @@ const links = [
 ---
 
 <header class="site-header">
-  <div class="shell">
-    <div class="header-bar">
-      <a href="#inicio" class="flex items-center gap-3.5" aria-label="ALBA DÉRMICA - Inicio">
+  <div class="shell pt-3">
+    <div class="header-bar glass glass-tint">
+      <a href="#inicio" class="flex items-center gap-3" aria-label="ALBA DÉRMICA - Inicio">
         <span
-          class="flex h-[42px] w-[42px] items-center justify-center rounded-lg bg-night font-display text-lg font-bold text-gold"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-champagne/50 font-display text-[17px] text-champagne italic"
         >
-          AD
+          ad
         </span>
-        <span class="flex flex-col gap-0.5">
-          <span class="font-display text-xl font-bold tracking-[0.1em] whitespace-nowrap text-ink">
-            ALBA DÉRMICA
+        <span class="flex flex-col leading-none">
+          <span class="font-display text-[21px] font-medium tracking-[0.02em] whitespace-nowrap text-pearl">
+            Alba Dérmica
           </span>
-          <span class="text-[9px] font-semibold tracking-[0.16em] whitespace-nowrap text-gold-dark">
+          <span class="mt-1 hidden text-[8.5px] font-semibold tracking-[0.3em] whitespace-nowrap text-champagne/80 sm:block">
             ATELIER FACIAL &amp; REGENERACIÓN
           </span>
         </span>
       </a>
 
-      <nav class="hidden items-center gap-9 lg:flex" aria-label="Navegación principal">
+      <nav class="hidden items-center gap-8 xl:flex" aria-label="Navegación principal">
         {
           links.map((link) => (
             <a href={link.href} class="nav-link" data-nav>
@@ -39,49 +39,51 @@ const links = [
         }
       </nav>
 
-      <div class="hidden items-center gap-3 lg:flex">
+      <div class="hidden items-center gap-2 xl:flex">
         <a
           href="https://wa.me/525584219000"
-          class="btn btn-shine gap-2 rounded-full border border-line bg-white px-4 py-2.5 text-[13px] font-medium tracking-normal text-ink hover:-translate-y-0.5 hover:border-gold"
+          class="btn gap-2 rounded-full px-4 py-2.5 text-[12px] text-pearl/75 hover:text-pearl"
         >
-          <Icon name="message-circle" class="h-3.5 w-3.5 text-gold-dark" />
+          <Icon name="message-circle" class="h-3.5 w-3.5 text-champagne" />
           Concierge
         </a>
         <a
           href="#reservas"
-          class="btn btn-shine gap-2 rounded-full bg-night px-5 py-2.5 tracking-normal text-white hover:-translate-y-0.5 hover:bg-black"
+          class="btn btn-shine rounded-full bg-champagne px-5 whitespace-nowrap py-3 text-[12px] text-obsidian hover:bg-champagne-soft"
         >
-          <Icon name="sparkles" class="h-3.5 w-3.5 text-gold" />
-          Reservar Cita VIP
+          Reservar Cita
+          <Icon name="arrow-up-right" class="h-3.5 w-3.5" />
         </a>
       </div>
 
       <button
         type="button"
-        class="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-pearl xl:hidden"
         data-menu-toggle
         aria-expanded="false"
         aria-label="Abrir menú"
       >
-        <span data-icon-menu><Icon name="menu" class="h-5 w-5" /></span>
-        <span data-icon-close class="hidden"><Icon name="x" class="h-5 w-5" /></span>
+        <span data-icon-menu><Icon name="menu" class="h-[18px] w-[18px]" /></span>
+        <span data-icon-close class="hidden"><Icon name="x" class="h-[18px] w-[18px]" /></span>
       </button>
     </div>
-  </div>
 
-  <div class="mobile-menu lg:hidden" data-mobile-menu>
-    <nav class="flex flex-col gap-1 py-4" aria-label="Navegación móvil">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            class="rounded px-3 py-2.5 text-sm text-ink-soft transition-colors hover:bg-gold-faint hover:text-gold-dark"
-          >
-            {link.label}
-          </a>
-        ))
-      }
-      <a href="#reservas" class="btn btn-dark mt-3 w-full">Reservar Cita VIP</a>
-    </nav>
+    <div class="mobile-menu glass xl:hidden" data-mobile-menu>
+      <nav class="flex flex-col gap-1" aria-label="Navegación móvil">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="rounded-2xl px-4 py-3 font-display text-2xl text-pearl/85 transition-colors hover:bg-white/5 hover:text-champagne"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+        <a href="#reservas" class="btn btn-shine mt-2 w-full bg-champagne py-4 text-obsidian">
+          Reservar Cita
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
