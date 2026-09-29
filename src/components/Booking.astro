@@ -1,0 +1,242 @@
+---
+import Icon from "./Icon.astro";
+
+const chips = [
+  "Hydra-Luxe Infusión",
+  "Sculpt & Lift Radiofrecuencia",
+  "Glow Peel Biorevitalizante",
+  "Terapia de Exosomas",
+  "Diagnóstico 3D & Spa",
+];
+
+const specialists = [
+  {
+    initials: "CL",
+    name: "Dra. Camille Laurent",
+    role: "Directora Científica • Longevidad Cutánea",
+    uni: "PhD en Biología Celular Cutánea (París)",
+    status: "Disponible: Hoy y Mañana",
+    selected: true,
+  },
+  {
+    initials: "SB",
+    name: "Lic. Sofia Benavides",
+    role: "Máster en Terapias Suizas & Remodelación",
+    uni: "Certificación Instituto Dérmico de Ginebra",
+    status: "Disponible: Jueves y Viernes",
+    selected: false,
+  },
+  {
+    initials: "MV",
+    name: "Dr. Mateo Valenzuela",
+    role: "Médico Estético & Bioestimulación",
+    uni: "Especialista en Regeneración Tisular",
+    status: "Disponible: Próx. Semana",
+    selected: false,
+  },
+];
+
+const days = [
+  { day: "Jue 1", month: "Octubre", selected: true },
+  { day: "Vie 2", month: "Octubre" },
+  { day: "Lun 5", month: "Octubre" },
+  { day: "Mar 6", month: "Octubre" },
+];
+
+const hours = ["10:30 AM", "12:00 PM", "04:30 PM", "06:00 PM"];
+const selectedHour = "12:00 PM";
+
+const notes = [
+  { icon: "calendar-check", text: "Cancelación flexible 24h sin costo" },
+  { icon: "shield-check", text: "100% de confidencialidad médica garantizada" },
+  { icon: "message-circle", text: "Confirmación inmediata vía WhatsApp Concierge" },
+];
+---
+
+<section id="reservas" class="bg-night">
+  <div class="shell flex flex-col items-center gap-10 py-20">
+    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
+      <p class="eyebrow-dark" data-reveal>ATELIER PRIVADO DE CITAS &amp; VALORACIÓN</p>
+      <h2 class="section-title text-white" data-reveal>
+        Agenda tu Experiencia de Transformación Facial
+      </h2>
+      <p class="section-sub text-ink-faint" data-reveal>
+        Selecciona tu protocolo de interés, elige a tu especialista de confianza y asegura tu
+        espacio prioritario en suite privada.
+      </p>
+    </div>
+
+    <div
+      data-reveal="zoom"
+      class="flex w-full max-w-[1080px] flex-col gap-8 rounded-[20px] border border-line-dark bg-night-card p-6 sm:p-10"
+    >
+      <div class="flex flex-col gap-4">
+        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
+          1. SELECCIONA EL PROTOCOLO O TRATAMIENTO DE TU INTERÉS
+        </p>
+        <div class="flex flex-wrap gap-2.5" data-select-group>
+          {
+            chips.map((chip, index) => (
+              <button
+                type="button"
+                data-select-option
+                class:list={["chip", index === 0 && "is-selected"]}
+                aria-pressed={index === 0 ? "true" : "false"}
+              >
+                <Icon name="check" class="h-3 w-3" strokeWidth={3} />
+                {chip}
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div id="especialistas" class="flex flex-col gap-4">
+        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
+          2. ELIGE A TU ESPECIALISTA DISPONIBLE
+        </p>
+        <div
+          class="grid grid-cols-1 gap-4 md:grid-cols-3"
+          data-select-group
+          data-group-specialists
+        >
+          {
+            specialists.map((doctor) => (
+              <button
+                type="button"
+                data-select-option
+                data-specialist-name={doctor.name}
+                class:list={["doc-card", doctor.selected && "is-selected"]}
+                aria-pressed={doctor.selected ? "true" : "false"}
+              >
+                <span class="flex items-center justify-between gap-3">
+                  <span class="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-gold font-display text-sm font-bold text-night">
+                    {doctor.initials}
+                  </span>
+                  <span class="doc-radio">
+                    <Icon name="check" class="radio-check" strokeWidth={3} />
+                  </span>
+                </span>
+                <span class="flex flex-col gap-0.5">
+                  <span class="font-display text-[13px] font-bold text-white">{doctor.name}</span>
+                  <span class="text-xs text-gold">{doctor.role}</span>
+                  <span class="text-[11px] text-ink-faint">{doctor.uni}</span>
+                </span>
+                <span class="inline-flex w-fit items-center rounded-[10px] bg-[#3d3428] px-2.5 py-1">
+                  <Icon name="circle-check" class="mr-1.5 h-3 w-3 text-live" />
+                  <span class="text-[10px] font-medium text-live">{doctor.status}</span>
+                </span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <p class="text-xs font-semibold tracking-[0.08em] text-gold">
+          3. SELECCIONA FECHA Y HORARIO PRIORITARIO
+        </p>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div class="flex flex-col gap-3">
+            <p class="text-xs text-ink-faint">Día disponible:</p>
+            <div class="grid grid-cols-4 gap-2.5" data-select-group>
+              {
+                days.map((day) => (
+                  <button
+                    type="button"
+                    data-select-option
+                    class:list={["day-pill", day.selected && "is-selected"]}
+                    aria-pressed={day.selected ? "true" : "false"}
+                  >
+                    <span class="day-text">{day.day}</span>
+                    <span class="month-text">{day.month}</span>
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+          <div class="flex flex-col gap-3">
+            <p class="text-xs text-ink-faint">Horario VIP:</p>
+            <div class="grid grid-cols-4 gap-2.5" data-select-group>
+              {
+                hours.map((hour) => (
+                  <button
+                    type="button"
+                    data-select-option
+                    class:list={["hour-pill", hour === selectedHour && "is-selected"]}
+                    aria-pressed={hour === selectedHour ? "true" : "false"}
+                  >
+                    {hour}
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <p class="text-xs font-semibold tracking-[0.08em] text-gold">4. DATOS DE CONFIRMACIÓN VIP</p>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div class="flex flex-col gap-1.5">
+            <label for="alba-name" class="text-[11px] text-ink-faint">Nombre Completo</label>
+            <div class="input-box">
+              <Icon name="user" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
+              <input
+                id="alba-name"
+                name="nombre"
+                type="text"
+                value="Carolina Méndez L."
+                autocomplete="name"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="alba-phone" class="text-[11px] text-ink-faint">WhatsApp / Teléfono VIP</label>
+            <div class="input-box">
+              <Icon name="phone" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
+              <input
+                id="alba-phone"
+                name="telefono"
+                type="tel"
+                value="+52 55 1234 5678"
+                autocomplete="tel"
+              />
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="alba-email" class="text-[11px] text-ink-faint">Correo Electrónico</label>
+            <div class="input-box">
+              <Icon name="mail" class="h-3.5 w-3.5 shrink-0 text-ink-faint" />
+              <input
+                id="alba-email"
+                name="email"
+                type="email"
+                value="carolina.mendez@luxury.com"
+                autocomplete="email"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-gold btn-shine">
+        <Icon name="calendar-check" class="h-4.5 w-4.5" strokeWidth={2.2} />
+        <span data-confirm-cta>
+          Confirmar Cita de Valoración Privada con Dra. Camille Laurent
+        </span>
+      </button>
+
+      <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-7">
+        {
+          notes.map((note) => (
+            <div class="flex items-center gap-1.5">
+              <Icon name={note.icon} class="h-3.5 w-3.5 shrink-0 text-gold" />
+              <p class="text-[11px] text-ink-faint">{note.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

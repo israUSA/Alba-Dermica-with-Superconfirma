@@ -1,0 +1,65 @@
+---
+import Icon from "./Icon.astro";
+
+const reviews = [
+  {
+    quote:
+      "“El protocolo Hydra-Luxe y la atención de la Dra. Camille cambiaron mi piel por completo. Desapareció la opacidad y recuperé una luminosidad que creí perdida. La elegancia del lugar es insuperable.”",
+    name: "Valeria Santamaría",
+    role: "Directora Creativa • CDMX",
+    treatment: "Protocolo: Hydra-Luxe Infusión Celular",
+  },
+  {
+    quote:
+      "“Buscaba resultados sin pasar por agujas ni tratamientos invasivos. El efecto del Sculpt & Lift de radiofrecuencia en el contorno mandibular es impresionante desde la primera sesión.”",
+    name: "Mariana De la Torre",
+    role: "Empresaria • Guadalajara",
+    treatment: "Protocolo: Sculpt & Lift Bio-Radiofrecuencia",
+  },
+  {
+    quote:
+      "“Un santuario en toda regla. La privacidad, el diagnóstico 3D donde te explican exactamente lo que tu piel necesita y el trato del equipo me dan una confianza infinita.”",
+    name: "Camila Fernández",
+    role: "Consultora Financiera • Monterrey",
+    treatment: "Protocolo: Glow Peel & Exosomas",
+  },
+];
+---
+
+<section class="bg-cream">
+  <div class="shell flex flex-col items-center gap-10 py-20">
+    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
+      <p class="eyebrow" data-reveal>TESTIMONIOS &amp; RESULTADOS VERIFICADOS</p>
+      <h2 class="section-title" data-reveal>
+        La Transformación Contada por Nuestras Pacientes
+      </h2>
+    </div>
+
+    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-3" data-reveal-stagger>
+      {
+        reviews.map((review) => (
+          <figure
+            data-reveal
+            class="card-lift flex flex-col justify-between gap-4 rounded-2xl border border-line bg-white p-7"
+          >
+            <div class="flex flex-col gap-3.5">
+              <div class="flex items-center gap-1" aria-label="Valoración: 5 de 5 estrellas">
+                {Array.from({ length: 5 }).map(() => (
+                  <Icon name="star" class="h-3.5 w-3.5 text-gold" filled />
+                ))}
+              </div>
+              <blockquote class="text-[13px] leading-[1.6] text-ink-soft italic">
+                {review.quote}
+              </blockquote>
+            </div>
+            <figcaption class="flex flex-col gap-0.5 border-t border-line pt-4">
+              <span class="font-display text-[15px] font-bold text-ink">{review.name}</span>
+              <span class="text-[11px] text-gold-dark">{review.role}</span>
+              <span class="text-[11px] text-ink-faint">{review.treatment}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

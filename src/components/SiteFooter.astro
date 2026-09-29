@@ -1,0 +1,70 @@
+---
+const protocolLinks = [
+  "Hydra-Luxe Infusión Celular",
+  "Sculpt & Lift Bio-Radiofrecuencia",
+  "Glow Peel Biorevitalizante",
+  "Terapia Celular de Exosomas",
+  "Diagnóstico Digital 3D",
+];
+
+const contact = [
+  "Av. Pdte. Masaryk 420, Polanco, CDMX",
+  "Lun a Sáb: 09:00 - 20:00 hrs (Previa Cita)",
+];
+---
+
+<footer class="bg-night">
+  <div class="shell flex flex-col gap-12 py-16 pb-8">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-[380px_1fr_1fr] lg:gap-16">
+      <div class="flex flex-col gap-4">
+        <p class="font-display text-[22px] font-bold tracking-[0.1em] text-white">ALBA DÉRMICA</p>
+        <p class="text-[13px] leading-[1.6] text-ink-faint">
+          Atelier de alta cosmetología clínica y regeneración celular. Dedicados al despertar de la
+          juventud y pureza biológica de tu piel a través de la cosmecéutica de autor.
+        </p>
+        <p class="text-[11px] text-gold">
+          Masaryk • Polanco | CDMX • Certificación Médica Estética
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-3.5">
+        <p class="text-[11px] font-semibold tracking-[0.1em] text-gold">PROTOCOLOS</p>
+        <ul class="flex flex-col gap-2.5">
+          {
+            protocolLinks.map((link) => (
+              <li>
+                <a
+                  href="#tratamientos"
+                  class="text-[13px] text-ink-faint transition-colors duration-300 hover:text-gold"
+                >
+                  {link}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-3.5">
+        <p class="text-[11px] font-semibold tracking-[0.1em] text-gold">CONTACTO &amp; ATELIER</p>
+        <div class="flex flex-col gap-2.5">
+          {
+            contact.map((line) => (
+              <p class="text-[13px] text-ink-faint">{line}</p>
+            ))
+          }
+          <p class="text-[13px] text-gold">WhatsApp Concierge: +52 55 8421 9000</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-between gap-3 border-t border-line-dark pt-6 sm:flex-row"
+    >
+      <p class="text-xs text-ink-faint">
+        © 2026 ALBA DÉRMICA Atelier Facial S.A. de C.V. Todos los derechos reservados.
+      </p>
+      <p class="text-xs text-gold">Aviso de Privacidad • Protocolo Sanitario • Términos VIP</p>
+    </div>
+  </div>
+</footer>

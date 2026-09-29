@@ -1,0 +1,172 @@
+---
+import Icon from "./Icon.astro";
+
+const metrics = [
+  { prefix: "+", target: 15000, decimals: 0, suffix: "", label: "Pieles Cuidadas" },
+  { prefix: "", target: 100, decimals: 0, suffix: "%", label: "No Invasivo" },
+  { prefix: "", target: null, suffix: "", label: "Activos Puros", static: "Suiza & Francia" },
+  { prefix: "", target: 4.9, decimals: 1, suffix: " ★", label: "650+ Reseñas VIP" },
+];
+---
+
+<section id="inicio" class="bg-cream">
+  <div class="shell flex flex-col items-center gap-12 py-16 lg:flex-row lg:justify-between lg:gap-10">
+    <div class="w-full max-w-[660px]">
+      <div data-reveal-stagger>
+        <div
+          data-reveal
+          class="inline-flex items-center gap-2 rounded-full border border-gold-light bg-gold-faint px-3.5 py-1.5"
+        >
+          <Icon name="sparkle" class="h-3.5 w-3.5 text-gold-dark" />
+          <span class="text-[11px] font-semibold tracking-[0.11em] text-gold-dark">
+            ALTA COSMETOLOGÍA CLÍNICA &amp; REGENERACIÓN CELULAR
+          </span>
+        </div>
+
+        <h1
+          data-reveal
+          class="mt-6 font-display text-[clamp(34px,4.5vw,50px)] leading-[1.14] font-bold text-ink"
+        >
+          El arte de la piel eterna: Ciencia celular y lujo en perfecta armonía.
+        </h1>
+
+        <p data-reveal class="mt-5 max-w-xl text-base leading-[1.65] text-ink-soft">
+          Descubre el máximo estándar de la cosmetología de autor en Latinoamérica. Tratamientos
+          faciales de alta precisión médica, rejuvenecimiento biotecnológico no invasivo y fórmulas
+          cosmecéuticas suizas diseñadas para devolver a tu piel su pureza, firmeza y resplandor
+          original.
+        </p>
+
+        <div data-reveal class="mt-7 flex flex-wrap items-center gap-4">
+          <a href="#reservas" class="btn btn-dark btn-shine">
+            <Icon name="calendar-plus" class="h-4 w-4 text-gold" />
+            Reservar Consulta de Valoración
+          </a>
+          <a href="#tratamientos" class="btn btn-ghost">
+            Explorar Tratamientos
+            <Icon name="arrow-right" class="h-3.5 w-3.5 text-ink-soft" />
+          </a>
+        </div>
+
+        <div data-reveal class="mt-4 flex flex-wrap gap-x-7 gap-y-5 pt-4">
+          {
+            metrics.map((metric) => (
+              <div class="flex flex-col gap-0.5">
+                <span class="font-display text-[22px] font-bold whitespace-nowrap text-ink">
+                  {metric.static ?? (
+                    <>
+                      {metric.prefix}
+                      <span data-counter data-target={metric.target} data-decimals={metric.decimals}>
+                        {metric.target?.toLocaleString("en-US", {
+                          minimumFractionDigits: metric.decimals,
+                        })}
+                      </span>
+                      {metric.suffix}
+                    </>
+                  )}
+                </span>
+                <span class="text-xs text-ink-soft">{metric.label}</span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="right" class="w-full max-w-[430px] shrink-0 lg:max-w-[580px]">
+      <div
+        class="stage relative mx-auto flex w-full flex-col gap-5 lg:block lg:h-[600px] lg:max-w-[580px]"
+      >
+        <div
+          class="pointer-events-none absolute top-[20px] left-[15px] hidden h-[90px] w-[90px] rounded-full border-[10px] border-gold/45 lg:block"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div
+          class="arch-portrait relative mx-auto h-[460px] w-full max-w-[350px] overflow-hidden rounded-t-[175px] shadow-float lg:absolute lg:top-[15px] lg:left-[55px] lg:mx-0 lg:h-[520px] lg:w-[350px]"
+        >
+          <img
+            src="/images/hero-retrato.jpg"
+            alt="Rostro cuidado en el atelier Alba Dérmica"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+
+        <div
+          data-reveal
+          class="relative z-2 flex w-full flex-col gap-2.5 rounded-[18px] border-[1.5px] border-line-dark bg-night-card p-4 shadow-float lg:absolute lg:top-[45px] lg:left-[300px] lg:w-[265px]"
+        >
+          <div class="flex items-center justify-between gap-2">
+            <span class="inline-flex items-center gap-1.5">
+              <Icon name="scan-face" class="h-3.5 w-3.5 text-gold" />
+              <span class="text-[10px] font-bold tracking-[0.1em] text-gold">DERMASCAN 3D</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-[10px] bg-[#1e3322] px-2 py-[3px]">
+              <span class="relative flex h-1.5 w-1.5">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-live opacity-70">
+                </span>
+                <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-live"></span>
+              </span>
+              <span class="text-[9px] font-bold text-live">EN VIVO</span>
+            </span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <p class="text-[11px] font-semibold text-white">
+              Luminosidad Celular Dérmica: 98.4%
+            </p>
+            <div class="h-1 w-full overflow-hidden rounded-[2px] bg-[#38342d]">
+              <div class="pbar-fill h-1 rounded-[2px] bg-gold" style="--bar-w: 93%"></div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1">
+            <p class="text-[11px] font-semibold text-white">
+              Densidad de Colágeno Tipo I &amp; III: Óptima
+            </p>
+            <div class="h-1 w-full overflow-hidden rounded-[2px] bg-[#38342d]">
+              <div class="pbar-fill h-1 rounded-[2px] bg-gold" style="--bar-w: 87%"></div>
+            </div>
+          </div>
+          <p class="mt-1 text-[10px] font-medium text-gold">
+            Protocolo Asignado: Hydra-Luxe + Exosomas
+          </p>
+        </div>
+
+        <div
+          data-reveal
+          class="relative z-3 flex w-full flex-col gap-1.5 rounded-[18px] border-[1.5px] border-gold-light bg-night p-4 shadow-float lg:absolute lg:top-[395px] lg:left-[10px] lg:w-[260px]"
+        >
+          <p class="text-[9px] font-bold tracking-[0.1em] text-gold">
+            FÓRMULA BIOTECNOLÓGICA SUIZA
+          </p>
+          <p class="font-display text-[13px] font-bold text-white">
+            Exosomas Liofilizados &amp; Ácido Hialurónico Triple
+          </p>
+          <p class="text-[10px] text-ink-faint">
+            🇨🇭 Ginebra • 100% Biofermentado de Grado Médico
+          </p>
+        </div>
+
+        <div
+          data-reveal
+          class="relative z-4 flex w-full items-center gap-3 rounded-[18px] border border-line-dark bg-night-card p-4 shadow-float lg:absolute lg:top-[470px] lg:left-[275px] lg:w-[295px]"
+        >
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-gold bg-gold font-display text-sm font-bold text-night">
+            CL
+          </span>
+          <div class="flex min-w-0 flex-col gap-0.5">
+            <p class="font-display text-[13px] font-bold text-white">Dra. Camille Laurent</p>
+            <p class="text-[10px] text-gold">
+              Atención individualizada en suite de cosmetología
+            </p>
+            <p class="flex items-center gap-1.5 text-[10px] font-medium text-live">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-live"></span>
+              2 turnos prioritarios disponibles hoy
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

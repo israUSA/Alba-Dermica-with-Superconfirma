@@ -1,0 +1,86 @@
+---
+import Icon from "./Icon.astro";
+
+const treatments = [
+  {
+    image: "/images/tr-hydraluxe.jpg",
+    alt: "Infusión celular Hydra-Luxe",
+    tag: "Hidratación & Luz",
+    title: "Hydra-Luxe Infusión Celular",
+    desc: "Limpieza hidrodinámica con activos biofermentados, ácido hialurónico triple y oxigenación para un resplandor inmediato.",
+    badge: "75 min • Cero dolor",
+  },
+  {
+    image: "/images/tr-sculpt.jpg",
+    alt: "Bio-radiofrecuencia Sculpt & Lift",
+    tag: "Firmeza & Contorno",
+    title: "Sculpt & Lift Bio-Radiofrecuencia",
+    desc: "Tensado cutáneo y bioestimulación profunda de colágeno y elastina. Redefine el óvalo facial con efecto tensor visible.",
+    badge: "90 min • Efecto tensor",
+  },
+  {
+    image: "/images/tr-glowpeel.jpg",
+    alt: "Glow Peel biorevitalizante",
+    tag: "Renovación Sedosa",
+    title: "Glow Peel Biorevitalizante",
+    desc: "Exfoliación suave con alfa-hidroxiácidos de seda, niacinamida pura y péptidos regenerativos para una piel ultra suave.",
+    badge: "60 min • Sin descamación",
+  },
+  {
+    image: "/images/tr-exosomas.jpg",
+    alt: "Terapia de exosomas y longevidad",
+    tag: "Medicina Celular Regenerativa",
+    title: "Terapia de Exosomas & Longevidad",
+    desc: "El tratamiento más vanguardista de longevidad cutánea: bio-infusión de factores de crecimiento para reprogramación celular dérmica.",
+    badge: "90 min • Rejuvenecimiento supremo",
+  },
+];
+---
+
+<section id="tratamientos" class="bg-cream">
+  <div class="shell flex flex-col items-center gap-12 py-20">
+    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
+      <p class="eyebrow" data-reveal>CATÁLOGO DE ALTA COSMETOLOGÍA</p>
+      <h2 class="section-title" data-reveal>Protocolos Exclusivos de Precisión Celular</h2>
+      <p class="section-sub" data-reveal>
+        Fórmulas biotecnológicas suizas y tecnología no invasiva para renovar la arquitectura de tu
+        piel.
+      </p>
+    </div>
+
+    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4" data-reveal-stagger>
+      {
+        treatments.map((treatment) => (
+          <article
+            data-reveal
+            class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-line bg-white"
+          >
+            <div class="relative h-40 w-full overflow-hidden">
+              <img
+                src={treatment.image}
+                alt={treatment.alt}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.07]"
+              />
+            </div>
+            <div class="flex flex-1 flex-col items-start gap-3.5 p-6">
+              <p class="text-[11px] font-semibold tracking-[0.06em] text-gold-dark">
+                {treatment.tag}
+              </p>
+              <h3 class="font-display text-lg leading-[1.25] font-bold text-ink">
+                {treatment.title}
+              </h3>
+              <p class="text-[13px] leading-5 text-ink-soft">{treatment.desc}</p>
+            </div>
+            <div class="px-6 pb-6">
+              <span class="inline-flex items-center gap-2 rounded-xl bg-gold-faint px-3 py-1.5">
+                <Icon name="check" class="h-3 w-3 text-gold-dark" strokeWidth={3} />
+                <span class="text-[11px] font-medium text-gold-dark">{treatment.badge}</span>
+              </span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

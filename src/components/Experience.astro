@@ -1,0 +1,63 @@
+---
+const cards = [
+  {
+    image: "/images/exp-suites.jpg",
+    alt: "Suite privada del atelier Alba Dérmica",
+    tag: "Privacidad Absoluta",
+    title: "Suites Privadas Individuales",
+    desc: "Cabinas insonorizadas con aromaterapia botánica personalizada, sábanas de lino orgánico y música ambiental relajante.",
+  },
+  {
+    image: "/images/exp-diagnostico.jpg",
+    alt: "Diagnóstico digital computarizado de la piel",
+    tag: "Tecnología Suiza 3D",
+    title: "Diagnóstico Digital Computarizado",
+    desc: "Escaneo dérmico que evalúa el daño solar profundo, densidad de colágeno y poros para un tratamiento 100% a la medida.",
+  },
+  {
+    image: "/images/exp-atencion.jpg",
+    alt: "Atención exclusiva sin prisas",
+    tag: "Tiempo Dedicado",
+    title: "Atención Exclusiva Sin Prisas",
+    desc: "Solo atendemos un número limitado de citas diarias para garantizar un trato minucioso y seguimiento médico post-tratamiento.",
+  },
+];
+---
+
+<section id="experiencia" class="bg-cream">
+  <div class="shell flex flex-col items-center gap-12 py-20">
+    <div class="flex flex-col items-center gap-3.5 text-center" data-reveal-stagger>
+      <p class="eyebrow" data-reveal>EL ATELIER ALBA DÉRMICA</p>
+      <h2 class="section-title" data-reveal>Un Santuario de Calma y Rigor Clínico</h2>
+      <p class="section-sub" data-reveal>
+        Cada cita se desarrolla en una atmósfera privada donde la biotecnología médica se fusiona
+        con la indulgencia sensorial.
+      </p>
+    </div>
+
+    <div class="grid w-full grid-cols-1 gap-5 md:grid-cols-3" data-reveal-stagger>
+      {
+        cards.map((card) => (
+          <article
+            data-reveal
+            class="card-lift group flex flex-col overflow-hidden rounded-2xl border border-line bg-white"
+          >
+            <div class="relative h-[200px] w-full overflow-hidden">
+              <img
+                src={card.image}
+                alt={card.alt}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.07]"
+              />
+            </div>
+            <div class="flex flex-1 flex-col items-start gap-3 p-6">
+              <p class="text-[11px] font-semibold tracking-[0.06em] text-gold-dark">{card.tag}</p>
+              <h3 class="font-display text-lg font-bold text-ink">{card.title}</h3>
+              <p class="text-[13px] leading-5 text-ink-soft">{card.desc}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,87 @@
+---
+import Icon from "./Icon.astro";
+
+const links = [
+  { label: "Inicio", href: "#inicio" },
+  { label: "Tratamientos", href: "#tratamientos" },
+  { label: "Especialistas", href: "#especialistas" },
+  { label: "Experiencia", href: "#experiencia" },
+  { label: "Reservas", href: "#reservas" },
+];
+---
+
+<header class="site-header">
+  <div class="shell">
+    <div class="header-bar">
+      <a href="#inicio" class="flex items-center gap-3.5" aria-label="ALBA DÉRMICA - Inicio">
+        <span
+          class="flex h-[42px] w-[42px] items-center justify-center rounded-lg bg-night font-display text-lg font-bold text-gold"
+        >
+          AD
+        </span>
+        <span class="flex flex-col gap-0.5">
+          <span class="font-display text-xl font-bold tracking-[0.1em] whitespace-nowrap text-ink">
+            ALBA DÉRMICA
+          </span>
+          <span class="text-[9px] font-semibold tracking-[0.16em] whitespace-nowrap text-gold-dark">
+            ATELIER FACIAL &amp; REGENERACIÓN
+          </span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-9 lg:flex" aria-label="Navegación principal">
+        {
+          links.map((link) => (
+            <a href={link.href} class="nav-link" data-nav>
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <div class="hidden items-center gap-3 lg:flex">
+        <a
+          href="https://wa.me/525584219000"
+          class="btn btn-shine gap-2 rounded-full border border-line bg-white px-4 py-2.5 text-[13px] font-medium tracking-normal text-ink hover:-translate-y-0.5 hover:border-gold"
+        >
+          <Icon name="message-circle" class="h-3.5 w-3.5 text-gold-dark" />
+          Concierge
+        </a>
+        <a
+          href="#reservas"
+          class="btn btn-shine gap-2 rounded-full bg-night px-5 py-2.5 tracking-normal text-white hover:-translate-y-0.5 hover:bg-black"
+        >
+          <Icon name="sparkles" class="h-3.5 w-3.5 text-gold" />
+          Reservar Cita VIP
+        </a>
+      </div>
+
+      <button
+        type="button"
+        class="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink lg:hidden"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Abrir menú"
+      >
+        <span data-icon-menu><Icon name="menu" class="h-5 w-5" /></span>
+        <span data-icon-close class="hidden"><Icon name="x" class="h-5 w-5" /></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu lg:hidden" data-mobile-menu>
+    <nav class="flex flex-col gap-1 py-4" aria-label="Navegación móvil">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="rounded px-3 py-2.5 text-sm text-ink-soft transition-colors hover:bg-gold-faint hover:text-gold-dark"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a href="#reservas" class="btn btn-dark mt-3 w-full">Reservar Cita VIP</a>
+    </nav>
+  </div>
+</header>
